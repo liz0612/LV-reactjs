@@ -1,0 +1,89 @@
+$primary: #e81512;
+$bg: #000;
+$text: white;
+  body, html, #root {
+    height: 100%;
+    background-color: #000; 
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+  }
+.home-container {
+    background-color: $bg;
+    color: $text;
+    padding: 2rem;
+    min-height: 100vh; // 👈 this line
+    font-family: 'Courier New', Courier, monospace;
+
+    .terminal-bar {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      
+        a {
+          color: white;
+          text-decoration: none;
+          margin: 0 0.3rem;
+          transition: color 0.3s ease;
+      
+          &:hover {
+            color: $primary; // red on hover
+          }
+        }
+      
+        .username {
+          color: $primary;
+          font-weight: bold;
+    }
+  }
+
+  .hero-flex {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+
+  .image-side img {
+    width: 500px; // 🔥 MAKE IT BIGGER
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .text-side {
+    font-size: 1.8rem;
+    color: $text;
+  }
+
+  .greeting {
+    margin: 0;
+  }
+
+  .red-arrow {
+    color: $primary;
+    font-weight: bold;
+  }
+
+  .white-text {
+    color: $text;
+    font-weight: normal;
+  }
+
+  .tags {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.1rem;
+
+    span {
+      padding: 0 0.5rem;
+      color: $text;
+
+      &:not(:last-child)::after {
+        content: "|";
+        color: $primary;
+        padding-left: 0.5rem;
+      }
+    }
+  }
+}

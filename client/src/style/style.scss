@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html, #root {
+    height: 100%;
+    background-color: #000; // 
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  html {
+    overflow-x: hidden;
+  }
