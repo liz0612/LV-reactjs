@@ -1,0 +1,25 @@
+$primary: #e81512;
+$text: white;
+
+.terminal-bar {
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  background-color: black;
+  font-family: 'Courier New', Courier, monospace;
+
+  a {
+    color: $text;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .username {
+    color: $primary;
+    font-weight: bold;
+  }
+}
