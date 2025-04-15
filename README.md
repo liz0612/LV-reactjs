@@ -7,7 +7,7 @@ Welcome to my personal web developer portfolio built using **ReactJS**! This pro
 
 ## 🌐 Live Site
 
-[[https://your-deployed-site.com](https://your-deployed-site.com) *(Update this once deployed)*](https://lv-reactjs.onrender.com/)
+(https://lv-reactjs.onrender.com/)
 
 ---
 
