@@ -1,47 +1,78 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import "../style/Post.scss";
 
+function Post() {
+  const [posts, setPosts] = useState([
+    { id: 1, name: "Lizbeth", message: "Hello!", likes: 0 },
+    { id: 2, name: "Vabjol", message: "Great page!", likes: 0 },
+    { id: 3, name: "Sergio", message: "I enjoy your page", likes: 0 },
+  ]);
 
-function Admin() {
-  const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    link: '',
-    imageUrl: '',
-  });
+  const [formData, setFormData] = useState({ name: "", message: "" });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Submitting project:', formData);
-    // Later we’ll send this to the backend!
+    const newPost = {
+      id: Date.now(),
+      name: formData.name,
+      message: formData.message,
+      likes: 0,
+    };
+    setPosts([newPost, ...posts]);
+    setFormData({ name: "", message: "" });
+  };
+
+  const handleLike = (id) => {
+    const updatedPosts = posts.map((post) =>
+      post.id === id ? { ...post, likes: post.likes + 1 } : post
+    );
+    setPosts(updatedPosts);
   };
 
   return (
-    <div>
-      <h2>Admin Panel – Add a Project</h2>
+    <div className="post-container">
+      <h2>Post a thought</h2>
       <form onSubmit={handleSubmit}>
-        <label>Title:</label>
-        <input type="text" name="title" value={formData.title} onChange={handleChange} required />
-
-        <label>Description:</label>
-        <textarea name="description" value={formData.description} onChange={handleChange} required />
-
-        <label>Project Link (GitHub/Live Site):</label>
-        <input type="text" name="link" value={formData.link} onChange={handleChange} required />
-
-        <label>Image URL:</label>
-        <input type="text" name="imageUrl" value={formData.imageUrl} onChange={handleChange} />
-
-        <button type="submit">Post Project</button>
+        <input
+          type="text"
+          name="name"
+          placeholder="NAME"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="message"
+          placeholder="What’s on your mind?"
+          value={formData.message}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">Post</button>
       </form>
+
+      <div className="thoughts">
+        {posts.map((post) => (
+          <div className="thought" key={post.id}>
+            <h3>
+              {post.name}{" "}
+              <span onClick={() => handleLike(post.id)} className="like">
+                ❤️ {post.likes}
+              </span>
+            </h3>
+            <p>{post.message}</p>
+            <hr />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
 
-export default Admin;
+export default Post;
